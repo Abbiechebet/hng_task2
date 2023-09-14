@@ -67,7 +67,7 @@ export default class PersonController {
     const person = await PersonModel.findById(id)
     if(!person) throw new NotFoundError(`The person with this id: ${id}, does not exist`)
 
-    await person.findByIdAndUpdate(id, {
+    await  PersonModel.findByIdAndUpdate(id, {
       isDeleted: true
     })
     // await PersonModel.findOneAndDelete()
