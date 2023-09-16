@@ -28,7 +28,7 @@ app.use(morgan("tiny"));
 app.use(express.json());
 
 // Routes
-app.use("/api/v1/person", personRouter);
+app.use("/api", personRouter);
 
 app.use(globalErrorHandler);
 

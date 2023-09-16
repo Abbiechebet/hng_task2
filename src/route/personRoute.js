@@ -4,12 +4,12 @@ import { tryCatchHandler} from "../utils/tryCatch.handler.js"
 
 const router = Router()
 
-router.post("/create", tryCatchHandler( PersonController.createPerson))
+router.post("/", tryCatchHandler( PersonController.createPerson))
 
-router.put("/update/:id", tryCatchHandler( PersonController.updateOnePerson))
+router.put("/:user_id", tryCatchHandler( PersonController.updateOnePerson))
 
-router.get("/find/:id", tryCatchHandler( PersonController.findPerson))
+router.get("/:user_id", tryCatchHandler( PersonController.findPerson))
 
-router.delete("/delete/:id",  tryCatchHandler( PersonController.deletePerson))
+router.delete("/:user_id",  tryCatchHandler( PersonController.deletePerson))
 
 export {router}

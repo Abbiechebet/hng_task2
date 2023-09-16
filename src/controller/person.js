@@ -18,7 +18,7 @@ export default class PersonController {
   }
 
   static async updateOnePerson(req, res){
-    const { id } = req.params
+    const { user_id } = req.params
     const { error } = mongoIdValidator.validate(req.params)
     if( error ) throw new BadUserRequestError("Please pass in a valid mongoId")
 
@@ -26,10 +26,10 @@ export default class PersonController {
     const updatePersonError = updateValidatorResponse.error
     if(updatePersonError) throw updatePersonError
 
-    const person = await PersonModel.findById(id)
-    if(!person) throw new NotFoundError(`The person with this id: ${id}, does not exist`)
+    const person = await PersonModel.findById(user_id)
+    if(!person) throw new NotFoundError(`The person with this id: ${user_id}, does not exist`)
 
-    const updatedPerson = await PersonModel.findByIdAndUpdate(id, req.body, {new: true})
+    const updatedPerson = await PersonModel.findByIdAndUpdate(user_id, req.body, {new: true})
     return res.status(200).json({
       message: "Person updated successfully",
       status: "Success",
@@ -42,12 +42,12 @@ export default class PersonController {
 
 
   static async findPerson(req, res) {
-    const { id } = req.params
+    const { user_id } = req.params
     const { error } = mongoIdValidator.validate(req.params)
     if( error ) throw new BadUserRequestError("Please pass in a valid mongoId")
 
-    const person = await PersonModel.findById(id)
-    if(!person) throw new NotFoundError(`The person with this id: ${id}, does not exist`)
+    const person = await PersonModel.findById(user_id)
+    if(!person) throw new NotFoundError(`The person with this id: ${user_id}}, does not exist`)
 
     return res.status(200).json({
       message: "Person found successfully",
@@ -60,14 +60,14 @@ export default class PersonController {
 
 
   static async deletePerson(req, res) {
-    const { id } = req.params
+    const { user_id} = req.params
     const { error } = mongoIdValidator.validate(req.params)
     if( error ) throw new BadUserRequestError("Please pass in a valid mongoId")
 
-    const person = await PersonModel.findById(id)
-    if(!person) throw new NotFoundError(`The person with this id: ${id}, does not exist`)
+    const person = await PersonModel.findById(user_id)
+    if(!person) throw new NotFoundError(`The person with this id: ${user_id}, does not exist`)
 
-    await  PersonModel.findByIdAndUpdate(id, {
+    await  PersonModel.findByIdAndUpdate(user_id, {
       isDeleted: true
     })
     // await PersonModel.findOneAndDelete()
