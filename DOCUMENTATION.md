@@ -14,24 +14,22 @@
   - Body: 
     ```json
     {
-      "name": "John",
-      "age": 30,
-      "address": "123 Street"
+      "name": "Shemaar Moore",
+      "address": "Nairobi, Kenya"
     }
     ```
 
 ### READ a Person's details:
-- GET `/api/:id`
+- GET `/api/:user_id`
 
 ### UPDATE a Person's details:
-- PUT `/api/:id`
+- PUT `/api/:user_id`
   - Body: 
     ```json
     {
-      "name": "John Doe",
-      "age": 31
+      "name": "Shemaar Frankline Moore",
     }
     ```
 
 ### DELETE a Person:
-- DELETE `/api/:id`
+- DELETE `/api/:user_id`
