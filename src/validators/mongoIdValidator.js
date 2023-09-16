@@ -5,6 +5,6 @@ import JoiMongoId from "joi-objectid"
 Joi.objectId = JoiMongoId(Joi)
 
 export const mongoIdValidator = Joi.object({
-  id: Joi.objectId()
+  user_id: Joi.objectId()
 
 }).strict()

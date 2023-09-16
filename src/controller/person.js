@@ -43,6 +43,7 @@ export default class PersonController {
 
   static async findPerson(req, res) {
     const { user_id } = req.params
+    console.log("Received user_id:", user_id);
     const { error } = mongoIdValidator.validate(req.params)
     if( error ) throw new BadUserRequestError("Please pass in a valid mongoId")
 
