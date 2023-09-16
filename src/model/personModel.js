@@ -7,7 +7,7 @@ const personSchema = new Schema({
     },
     address: {
         type: String,
-        required: true
+        optional: true
     },
 });
 
